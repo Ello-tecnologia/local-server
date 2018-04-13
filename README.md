@@ -3,7 +3,7 @@
 Este repositório contém as instruções para inicializar o servidor principal.
 
 
-# Checklist
+## Checklist
 
 - FTP
 - Samba
@@ -21,8 +21,9 @@ Este repositório contém as instruções para inicializar o servidor principal.
   - jacobalberty/firebird:2.5.8-ss
 
 
-# Letsencrypt
+## Letsencrypt
 
+```
 docker run --rm \
     -p 80:80 \
     -p 443:443 \
@@ -31,15 +32,18 @@ docker run --rm \
     -e "LETSENCRYPT_EMAIL=clayton@ellotecnologia.net.br" \
     -e "LETSENCRYPT_DOMAIN1=os.ellotecnologia.net.br" \
     blacklabelops/letsencrypt install
+```
 
+## Para construir a imagem
 
-# Para construir a imagem
-
+```
 docker build -t ello/apache .
+```
 
 
-# Para inicializar o container
+## Para inicializar o container
 
+```
 docker run -d --name apache \
   -p 80:80 \
   -p 443:443 \
@@ -51,3 +55,4 @@ docker run -d --name apache \
   -v letsencrypt_challenges:/var/www/letsencrypt \
   --restart=unless-stopped \
   ello/apache
+```
