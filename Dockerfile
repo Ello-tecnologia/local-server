@@ -1,6 +1,4 @@
-FROM php:7.0-apache
-
-COPY backports.list /etc/apt/sources.list.d
+FROM php:7.4-apache
 
 RUN apt-get update && \
     apt-get install -y \
@@ -9,7 +7,7 @@ RUN apt-get update && \
       python \
       python-fdb \
       python-pip
-RUN apt-get install -y python-certbot-apache -t jessie-backports
+RUN apt-get install -y python-certbot-apache
 RUN pip install fdb telepot bottle pymongo
 
 RUN a2enmod cgi && \
